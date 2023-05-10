@@ -12,13 +12,22 @@ components:
       email:
         type: string
         nullable: false
+    sessions:
+      email:
+        type: string
+        nullable: false
+      access_token:
+        type: string
+        nullable: false
     errors:
       errors:
         type: string
 paths:
-  "/users":
+  "/sessions/signin":
     post:
-      summary: create user API
+      summary: sign in API
+      tags:
+      - Session/signin
       parameters: []
       responses:
         '200':
@@ -35,7 +44,36 @@ paths:
                   type: string
                   nullable: false
                   default: test-user@example.com
-                password_digest:
+                password:
+                  type: string
+                  nullable: false
+                  default: '123456'
+  "/users":
+    post:
+      summary: create user API
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '200':
+          description: Created
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  nullable: false
+                  default: user-test@example.com
+                password:
+                  type: string
+                  nullable: false
+                  default: '123456'
+                password_confirmation:
                   type: string
                   nullable: false
                   default: '123456'

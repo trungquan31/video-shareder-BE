@@ -6,12 +6,14 @@ require 'rails_helper'
 RSpec.describe "Users", type: :request do
   path '/users' do
     post('create user API') do
+      tags 'Users'
       consumes 'application/json'
       parameter name: :user, in: :body, schema: {
         type: 'object',
         properties: {
-          email: { type: :string, nullable: false, default: 'test-user@example.com' },
-          password_digest: { type: :string, nullable: false, default: '123456' }
+          email: { type: :string, nullable: false, default: 'user-test@example.com' },
+          password: { type: :string, nullable: false, default: '123456' },
+          password_confirmation: { type: :string, nullable: false, default: '123456' }
         }
       }
       response(200, 'Created') do

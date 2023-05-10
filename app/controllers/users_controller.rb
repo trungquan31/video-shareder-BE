@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user, only: :create
+
   def create
     @user = User.new(permitted_params)
     return if @user.save
@@ -11,6 +13,6 @@ class UsersController < ApplicationController
   private
 
   def permitted_params
-    params.permit(:email, :password_digest)
+    params.permit(:email, :password, :password_confirmation)
   end
 end
