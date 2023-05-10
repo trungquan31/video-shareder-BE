@@ -77,6 +77,47 @@ paths:
                   type: string
                   nullable: false
                   default: '123456'
+  "/videos":
+    get:
+      summary: get list videos API
+      tags:
+      - Videos
+      parameters:
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success
+        '422':
+          description: Unprocessable Entity
+    post:
+      summary: share videos API
+      tags:
+      - Videos
+      parameters:
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: created
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  nullable: false
+                  default: https://www.youtube.com/watch?v=7UfM7Lkw4U4
 servers:
 - url: "{defaultHost}"
   variables:
