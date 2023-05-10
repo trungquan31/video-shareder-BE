@@ -3,9 +3,44 @@ openapi: 3.0.1
 info:
   title: API V1
   version: v1
-paths: {}
+components:
+  schema:
+    users:
+      id:
+        type: integer
+        nullable: false
+      email:
+        type: string
+        nullable: false
+    errors:
+      errors:
+        type: string
+paths:
+  "/users":
+    post:
+      summary: create user API
+      parameters: []
+      responses:
+        '200':
+          description: Created
+        '422':
+          description: Unprocessable Entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  nullable: false
+                  default: test-user@example.com
+                password_digest:
+                  type: string
+                  nullable: false
+                  default: '123456'
 servers:
-- url: https://{defaultHost}
+- url: "{defaultHost}"
   variables:
     defaultHost:
-      default: www.example.com
+      default: ''

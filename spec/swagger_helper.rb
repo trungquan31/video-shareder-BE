@@ -21,13 +21,24 @@ RSpec.configure do |config|
         title: 'API V1',
         version: 'v1'
       },
+      components: {
+        schema:{
+          users: {
+            id: { type: :integer, nullable: false },
+            email: { type: :string, nullable: false }, 
+          },
+          errors: { 
+            errors: { type: :string }
+          }
+        }
+      },
       paths: {},
       servers: [
         {
           url: '{defaultHost}',
           variables: {
             defaultHost: {
-              default: ENV['API_HOST']
+              default: ''
             }
           }
         }
