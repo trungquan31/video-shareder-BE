@@ -25,7 +25,11 @@ RSpec.configure do |config|
         schema:{
           users: {
             id: { type: :integer, nullable: false },
-            email: { type: :string, nullable: false }, 
+            email: { type: :string, nullable: false },
+          },
+          sessions: {
+            email: { type: :string, nullable: false },
+            access_token: { type: :string, nullable: false },
           },
           errors: { 
             errors: { type: :string }

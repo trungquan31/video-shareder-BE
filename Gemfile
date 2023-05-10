@@ -27,6 +27,12 @@ gem 'kaminari'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
+# figaro
+gem 'figaro'
+
+# jwt
+gem 'jwt'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
