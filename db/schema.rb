@@ -11,25 +11,26 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_05_10_075936) do
+  create_table "user_videos", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "video_id"
+    t.index ["user_id"], name: "index_user_videos_on_user_id"
+    t.index ["video_id"], name: "index_user_videos_on_video_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "unique_emails", unique: true
-  end
-
-  create_table "users_videos", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "video_id", null: false
-    t.index ["user_id"], name: "index_users_videos_on_user_id"
-    t.index ["video_id"], name: "index_users_videos_on_video_id"
+    t.index ["email"], name: "unique_email", unique: true
   end
 
   create_table "videos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["url"], name: "unique_url", unique: true
   end
 
 end

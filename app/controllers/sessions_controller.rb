@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  before_action :validate_user, only: :new
-  skip_before_action :authenticate_user, only: :new
+  before_action :validate_user, only: :create
+  skip_before_action :authenticate_user, only: :create
 
-  def new
+  def create
     @access_token = generate_access_token
   end
 
