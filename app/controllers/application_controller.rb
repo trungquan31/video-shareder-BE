@@ -5,8 +5,6 @@ class ApplicationController < ActionController::API
   before_action :authenticate_user
 
   def current_user
-    render json: { errors: 'token expire' } if authenticate_user[:user_email].blank?
-
     @current_user ||= User.find_by(email: authenticate_user[:user_email])
     @current_user
   end
@@ -14,10 +12,12 @@ class ApplicationController < ActionController::API
   private
 
   def authenticate_user
-    JsonWebToken.decode(auth_header)
+    auth_user = JsonWebToken.decode(auth_param)
+    render json: { errors: 'token expire' } if auth_user[:user_email].blank?
+    auth_user
   end
 
-  def auth_header
+  def auth_param
     return params[:access_token].split.last if params[:access_token].present?
 
     render json: { errors: 'Missing token' }

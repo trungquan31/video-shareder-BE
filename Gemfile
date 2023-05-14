@@ -21,14 +21,12 @@ gem 'rswag-ui'
 # Add Rack-Cors
 gem 'rack-cors'
 
-# Add paginate
-gem 'kaminari'
+gem 'faraday'
+
+gem 'video_info'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
-
-# figaro
-gem 'figaro'
 
 # jwt
 gem 'jwt'
