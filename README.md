@@ -1,24 +1,71 @@
-# README
+# Line CRM API (Rails API)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 1. Prerequisites
+- Ruby 3.2.0
+- Rails 7.0.4.3
 
-Things you may want to cover:
+# 2. Preparation 
+- Open your terminal then cd to the project home
 
-* Ruby version
+# 3. Install dependencies
+```
+bundle install
+```
 
-* System dependencies
+# 4. Run db migrations
+```
+rails db:migrate
+```
 
-* Configuration
+# 5. Re-generate swagger API documentation if needed
+```
+rails rswag
+```
+or
+```
+rails rswag:specs:swaggerize
+```
+# 6. Start rails API
+```
+rails s
+```
 
-* Database creation
+# 7. Access app
+- Rails API root url: http://localhost:3000
+- Swagger API documentation: http://localhost:3000/api-docs/index.html
 
-* Database initialization
+# 8. Deploy
+- Edit config/deploy/staging.rb
+```
+set :ssh_options, {
+  keys: %w([YOUR_KEY_PATH]),
+  forward_agent: false,
+  auth_methods: %w(publickey)
+}
+```
+- Run
+```
+cap staging deploy
+```
+- SSH to EC2
+```
+cd ~/deploy/line-crm-api/current/
+```
+- Run
+```
+# stop rails server
+kill `cat tmp/pids/server.pid`
+```
+- Run
+```
+# option
+bundle config unset deployment
+bundle lock --add-platform x86_64-linux
+bundle install
 
-* How to run the test suite
+# option
+rails db:migrate RAILS_ENV=development
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# start rails server
+rails server --daemon
+```
