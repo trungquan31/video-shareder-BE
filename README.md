@@ -1,5 +1,22 @@
 # VIDEO SHARER API (Rails API)
 
+
+## SUMMARY
+# 1. What i have done: 
+- Complete 4 page (both BE and FE): login, sign up, homepage, share video page
+- Deploy to server in each stack
+- Build Swagger to BE
+# 2.What i have not completed:
+-  RealTime (Action cable + sidekiq + redis)
+- Unit test
+- Integration Test
+- Connect two servers (FE + BE): I have deploy success but netify do not allow to send http request => fail to connect FE to BE
++ BE: 54.169.130.113
++ FE: spiffy-queijadas-e4c14a.netlify.app
+
+THIS IS A SHORT DEMO FOR WHAT I HAVE DONE SO FAR: https://drive.google.com/file/d/1w0UYLHzfTN-I-7jdcoFsJBb3v1lW60Ci/view?usp=sharing
+
+## PROJECT DETAILS
 # 1. Prerequisites
 - Ruby 3.2.0
 - Rails 7.0.4.3
@@ -49,7 +66,7 @@ cap staging deploy
 ```
 - SSH to EC2
 ```
-cd ~/deploy/line-crm-api/current/
+cd ~/deploy/video_sharer_be/current/
 ```
 - Run
 ```
@@ -58,10 +75,6 @@ kill `cat tmp/pids/server.pid`
 ```
 - Run
 ```
-# option
-bundle config unset deployment
-bundle lock --add-platform x86_64-linux
-bundle install
 
 # option
 rails db:migrate RAILS_ENV=development
