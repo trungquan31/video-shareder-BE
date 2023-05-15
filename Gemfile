@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.0'
+ruby '3.1.3'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
@@ -30,7 +30,7 @@ gem 'jbuilder'
 
 # jwt
 gem 'jwt'
-
+gem 'bcrypt'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -44,9 +44,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
-
-# bcrypt
-gem 'bcrypt', '~> 3.1.2'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -68,4 +65,8 @@ end
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'capistrano', '~> 3.10', require: false
+  gem 'capistrano-rails', '~> 1.6', require: false
+  gem 'capistrano-rbenv', '~> 2.1', require: false
+  gem 'capistrano3-puma'
 end
