@@ -132,9 +132,9 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.2)
     minitest (5.18.0)
     msgpack (1.7.0)
-    mysql2 (0.5.5)
     net-imap (0.3.4)
       date
       net-protocol
@@ -149,6 +149,9 @@ GEM
     net-ssh (7.1.0)
     net_http_timeout_errors (1.0.0)
     nio4r (2.5.9)
+    nokogiri (1.14.4)
+      mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
     nokogiri (1.14.4-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.14.4-x86_64-linux)
@@ -159,6 +162,7 @@ GEM
     parallel (1.23.0)
     parser (3.2.2.1)
       ast (~> 2.4.1)
+    pg (1.5.3)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -269,6 +273,7 @@ GEM
     zeitwerk (2.6.8)
 
 PLATFORMS
+  ruby
   x86_64-darwin-20
   x86_64-linux
 
@@ -283,7 +288,7 @@ DEPENDENCIES
   faraday
   jbuilder
   jwt
-  mysql2 (~> 0.5)
+  pg
   pry
   puma (~> 5.0)
   rack-cors
