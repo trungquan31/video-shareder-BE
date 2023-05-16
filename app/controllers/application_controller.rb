@@ -13,7 +13,7 @@ class ApplicationController < ActionController::API
 
   def authenticate_user
     auth_user = JsonWebToken.decode(auth_param)
-    render json: { errors: 'token expire' } if auth_user[:user_email].blank?
+    render json: { errors: 'USER NOT EXITS' } if auth_user[:user_email].blank?
     auth_user
   end
 
