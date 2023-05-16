@@ -13,13 +13,17 @@ class ApplicationController < ActionController::API
 
   def authenticate_user
     auth_user = JsonWebToken.decode(auth_param)
-    render json: { errors: 'USER NOT EXITS' } if auth_user[:user_email].blank?
+    if auth_user.blank? || auth_user[:user_email].blank?
+      return render json: { errors: 'USER NOT EXITS' },
+                    status: :unprocessable_entity
+    end
+
     auth_user
   end
 
   def auth_param
-    return params[:access_token].split.last if params[:access_token].present?
+    return params[:access_token] if params[:access_token].present?
 
-    render json: { errors: 'Missing token' }
+    render json: { errors: 'Missing token' }, status: :unprocessable_entity
   end
 end
